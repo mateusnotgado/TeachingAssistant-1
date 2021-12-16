@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+/*import { Component, OnInit } from '@angular/core';
 import { NgModule } from '@angular/core';
 
 import { Aluno } from '../../../common/aluno';
@@ -29,4 +29,4 @@ export class MetasComponent implements OnInit {
             );
     }
 
-}
+}*/
