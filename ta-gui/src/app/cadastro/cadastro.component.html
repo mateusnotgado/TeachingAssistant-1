@@ -1,28 +1,40 @@
-<html >
-  <h1>Cadastro de Alunos</h1>
-  <table>
- <tr>
-    <td><label>Nome </label></td>
-    <td><input  name="namebox" ></td>
-    
- </tr>
- <tr>
-    <td><label>CPF </label></td>
-    <td><input  name="cpfbox"></td>
-    <td  name="msgcpfexistente">
-      Já existe um aluno com esse CPF
-    </td>
- </tr>
- <tr>
-    <td><label>e-mail </label></td>
-    <td><input  ></td>
- </tr>
- <tr>
-   <td><label>senha </label></td>
-   <td><input  ></td>
-</tr>
-<td><button>Adicionar</button></td>
- </table>
 
-
+ <table>
+   <tr>
+      <td><label>Nome </label></td>
+      <td><input [(ngModel)]="aluno.nome" name="namebox" ></td>
+     
+   </tr>
+   <tr>
+      <td><label>CPF </label></td>
+      <td><input [(ngModel)]="aluno.cpf" name="cpfbox"></td>
+      <td *ngIf="cpfduplicado" name="msgcpfexistente">
+        Já existe um aluno com esse CPF
+      </td>
+   </tr>
+   <tr>
+      <td><label>e-mail </label></td>
+      <td><input [(ngModel)]="aluno.email" ></td>
+   </tr>
+   <tr>
+     <td><label>senha </label></td>
+     <td><input [(ngModel)]="aluno.senha" ></td>
+  </tr>
+   <td><button (click)="criarAluno(aluno)">Adicionar</button></td>
+   </table>
+   <table>
+      <tr *ngIf="alunos.length > 0">
+         <th>Nome</th>
+         <th>CPF</th>
+         <th>e-mail</th>
+         <th>senha</th>
+      </tr>
+      <tr *ngFor="let a of alunos" name="alunolist">
+         <td name="nomelist">{{a.nome}}</td>
+         <td name="cpflist">{{a.cpf}}</td>
+         <td>{{a.email}}</td>
+         <td>{{a.senha}}</td>
+      </tr>
+      
+      </table>
   
