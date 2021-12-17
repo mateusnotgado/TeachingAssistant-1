@@ -3,23 +3,24 @@
   <table>
  <tr>
     <td><label>Professor</label></td>
-    <td><input  name="namebox" ></td>
+    <td><input [(ngModel)]="disciplina.teacher" name="namebox" ></td>
+    
   
  </tr>
  <tr>
     <td><label>Nome da discipina </label></td>
-    <td><input  name="cpfbox"></td>
+    <td><input [(ngModel)]="disciplina.name" name="cpfbox"></td>
     <td  name="msgcpfexistente">
-      Já existe uma ddisciplina com esse nome
+      Já existe uma disciplina com esse nome
     </td>
  </tr>
  <tr>
     <td><label>Horário</label></td>
-    <td><input  ></td>
+    <td><input [(ngModel)]="disciplina.hours" ></td>
  </tr>
  <tr>
    <td><label>Quantidade de vagas </label></td>
-   <td><input  ></td>
+   <td><input [(ngModel)]="disciplina.capacity" ></td>
 </tr>  
-<td><button>Adicionar</button></td>
+<td><button (click)="criarDisciplina(disciplina)">Adicionar</button></td>
  </table>

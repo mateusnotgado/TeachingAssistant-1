@@ -7,13 +7,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AlunosComponent } from './alunos.component';
-import { AlunoService } from './aluno.service';
+import { AlunoService } from './services/aluno.service';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.component';
 import { CadastroProfessorComponent } from './cadastro-professor/cadastro-professor.component';
 import { LoginAlunoComponent } from './login-aluno/login-aluno.component';
 import { LoginProfessorComponent } from './login-professor/login-professor.component';
 import { PaginaDisciplinasComponent } from './pagina-disciplinas/pagina-disciplinas.component';
+import { PaginaOfertaDisciplinasComponent } from './pagina-oferta-disciplinas/pagina-oferta-disciplinas.component';
+import { DisciplinasService } from './services/disciplinas.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { PaginaDisciplinasComponent } from './pagina-disciplinas/pagina-discipli
     CadastroProfessorComponent,
     LoginAlunoComponent,
     LoginProfessorComponent,
-    PaginaDisciplinasComponent
+    PaginaDisciplinasComponent,
+    PaginaOfertaDisciplinasComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,7 @@ import { PaginaDisciplinasComponent } from './pagina-disciplinas/pagina-discipli
       }
     ])
   ],
-  providers: [AlunoService],
+  providers: [AlunoService,DisciplinasService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
