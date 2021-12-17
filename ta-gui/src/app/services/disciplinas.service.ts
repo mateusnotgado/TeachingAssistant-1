@@ -12,7 +12,7 @@ export class DisciplinasService {
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   private taURL = 'http://localhost:3000';
 
-  disciplinas: Disciplina[]
+  disciplinas: Disciplina[]=[];
   constructor(private http: HttpClient) { 
     this.disciplinas=[];
   }
@@ -32,7 +32,7 @@ export class DisciplinasService {
       );
   }
 
-  getDisciplinas(): Observable<Disciplina> {
+  getDisciplinas(): Observable<Disciplina[]> {
     return this.http.get<Disciplina[]>(this.taURL + "/disciplinas")
       .pipe(
         retry(2)

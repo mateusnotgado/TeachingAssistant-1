@@ -26,4 +26,10 @@ export class CadastroDeAlunos {
     getAlunos(): Aluno[] {
      return this.alunos;
    }
+   verificarTamanhoSenha(senha:string):boolean{
+  if(senha.length<8)
+  return false;
+  else 
+  return true;
+   }
 }

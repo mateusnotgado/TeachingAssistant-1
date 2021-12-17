@@ -2,8 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Aluno } from '../../../../common/aluno';
 import { AlunoService } from '../services/aluno.service';
-//import { Aluno } from '../../../common/aluno';
-//import { AlunoService } from './aluno.service';
+
 
 @Component({
   selector: 'cadastro',
@@ -14,7 +13,7 @@ export class CadastroComponent implements OnInit {
 
  alunos:Aluno[]=[];
  aluno:Aluno=new Aluno();
-  cpfduplicado: boolean = false;
+
 
   constructor(private alunoService: AlunoService) { }
 
@@ -25,8 +24,9 @@ export class CadastroComponent implements OnInit {
           if (ar) {
             this.alunos.push(ar);
             this.aluno = new Aluno();
+            alert("aluno cadastrado com sucesso")
           } else {
-            this.cpfduplicado = true;
+            alert("aluno cadastrado sem sucesso")
           }
         },
         msg => { alert(msg.message); }
@@ -35,7 +35,7 @@ export class CadastroComponent implements OnInit {
 
 
   onMove(): void {
-    this.cpfduplicado = false;
+  
   }
 
   ngOnInit(): void {

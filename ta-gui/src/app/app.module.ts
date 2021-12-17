@@ -16,6 +16,7 @@ import { LoginProfessorComponent } from './login-professor/login-professor.compo
 import { PaginaDisciplinasComponent } from './pagina-disciplinas/pagina-disciplinas.component';
 import { PaginaOfertaDisciplinasComponent } from './pagina-oferta-disciplinas/pagina-oferta-disciplinas.component';
 import { DisciplinasService } from './services/disciplinas.service';
+import { cadastroProfessor } from './services/cadastroProfessor.service';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,7 @@ import { DisciplinasService } from './services/disciplinas.service';
       }
     ])
   ],
-  providers: [AlunoService,DisciplinasService],
+  providers: [AlunoService,DisciplinasService,cadastroProfessor],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

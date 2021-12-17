@@ -13,16 +13,16 @@ export class PaginaOfertaDisciplinasComponent implements OnInit {
   titulo: string  = "Oferta de Disciplinas";
   constructor(private disciplinasService: DisciplinasService) { }
 
-  obterDisciplinas(): Disciplina[]{
-    this.disciplinas=this.disciplinasService.getDisciplinas();
-    return this.disciplinas;
-  }
+  //obterDisciplinas(): Disciplina[]{
+    //this.disciplinas=this.disciplinasService.getDisciplinas();
+  //  return this.disciplinas;
+ // }
 
   selecionarDisciplina(index: number): void{
     this.disciplinas.splice(index,1);
   }
   ngOnInit(): void {
-    this.obterDisciplinas();
+   // this.obterDisciplinas();
   }
 
 }

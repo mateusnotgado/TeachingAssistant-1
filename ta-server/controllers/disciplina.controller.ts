@@ -1,7 +1,7 @@
-import { Disciplina } from "/home/raphael/codes/ourApp/TeachingAssistant-1/common/disciplina";
+import { Disciplina } from "../../common/disciplina";
 export class DisciplinaController {
 
-    disciplina: Disciplina[]
+    disciplina: Disciplina[]=[];
 
     constructor(){
         this.disciplina=[];
