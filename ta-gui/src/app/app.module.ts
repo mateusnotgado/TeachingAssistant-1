@@ -13,6 +13,7 @@ import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.componen
 import { CadastroProfessorComponent } from './cadastro-professor/cadastro-professor.component';
 import { LoginAlunoComponent } from './login-aluno/login-aluno.component';
 import { LoginProfessorComponent } from './login-professor/login-professor.component';
+import { PaginaDisciplinasComponent } from './pagina-disciplinas/pagina-disciplinas.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { LoginProfessorComponent } from './login-professor/login-professor.compo
     PaginaInicialComponent,
     CadastroProfessorComponent,
     LoginAlunoComponent,
-    LoginProfessorComponent
+    LoginProfessorComponent,
+    PaginaDisciplinasComponent
   ],
   imports: [
     BrowserModule,
