@@ -19,7 +19,9 @@
      <td><input [(ngModel)]="aluno.senha" ></td>
   </tr>
    <td><button (click)="criarAluno(aluno)">Adicionar</button></td>
+   
    </table>
+   <button (click)="listarAlunos()">Listar</button>
    <table>
       <tr *ngIf="alunos.length > 0">
          <th>Nome</th>

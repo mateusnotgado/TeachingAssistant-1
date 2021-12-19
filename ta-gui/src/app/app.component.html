@@ -1,1 +1,27 @@
-<app-pagina-inicial></app-pagina-inicial>
+<!--app-pagina-inicial></app-pagina-inicial-->
+
+<div class="navbar">
+    
+    <div class="dropdown">
+      <button class="dropbtn">Cadastro
+        <i class=""></i>
+      </button>
+      <div class="dropdown-content">
+        <a routerLink="cadastro">Cadastro de Alunos</a>
+        <a routerLink="app-cadastro-professor">Cadastro de professores</a>
+        
+      </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Login
+          <i class=""></i>
+        </button>
+        <div class="dropdown-content">
+          <a routerLink="app-login-aluno">Login de Alunos</a>
+          <a routerLink="app-login-professor">Login de professores</a>
+          
+        </div>
+      </div>
+    
+  </div>
+  <router-outlet></router-outlet>
