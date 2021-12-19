@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { RouterModule }   from '@angular/router';
+import { Router, RouterModule }   from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +17,7 @@ import { PaginaDisciplinasComponent } from './pagina-disciplinas/pagina-discipli
 import { PaginaOfertaDisciplinasComponent } from './pagina-oferta-disciplinas/pagina-oferta-disciplinas.component';
 import { DisciplinasService } from './services/disciplinas.service';
 import { cadastroProfessor } from './services/cadastroProfessor.service';
+import { Teste } from './services/teste.service';
 
 @NgModule({
   declarations: [
@@ -56,10 +57,16 @@ import { cadastroProfessor } from './services/cadastroProfessor.service';
       {
         path: 'app-login-professor',
         component: LoginProfessorComponent
+      },
+
+      { 
+           path:'app-pagina-oferta-disciplinas',
+           component:PaginaOfertaDisciplinasComponent
+
       }
     ])
   ],
-  providers: [AlunoService,DisciplinasService,cadastroProfessor],
+  providers: [AlunoService,DisciplinasService,cadastroProfessor,Teste],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

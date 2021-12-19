@@ -8,12 +8,12 @@ import { Aluno } from '../../../../common/aluno';
 @Injectable()
 export class AlunoService {
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  private taURL = 'http://localhost:3000';
+  private taURL = 'http://localhost:8080';
 
   constructor(private http: HttpClient) { }
 
   criar(aluno: Aluno): Observable<Aluno> {
-    return this.http.post<any>(this.taURL + "/aluno", aluno, { headers: this.headers })
+    return this.http.post<any>(this.taURL + "/aluno/cadastro", aluno, { headers: this.headers })
       .pipe(
         retry(2),
         map(res => { if (res.success) { return aluno; } else { return null; } })
@@ -29,7 +29,7 @@ export class AlunoService {
   }
 
   getAlunos(): Observable<Aluno[]> {
-    return this.http.get<Aluno[]>(this.taURL + "/alunos")
+    return this.http.get<Aluno[]>(this.taURL + "/aluno/cadastro")
       .pipe(
         retry(2)
       );

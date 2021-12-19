@@ -31,9 +31,19 @@ export class CadastroComponent implements OnInit {
         },
         msg => { alert(msg.message); }
       );
+
   }
 
-
+  listarAlunos (){
+    this.alunoService.getAlunos().subscribe({
+      next : (users) => {
+            console.log(users)
+      },
+     error : () => {
+       alert("Deu merda carai")
+ }
+    })
+  }
   onMove(): void {
   
   }
