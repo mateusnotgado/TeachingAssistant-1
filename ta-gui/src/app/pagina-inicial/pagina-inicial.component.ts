@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Aluno } from '../models/Aluno';
 //import { Router } from '@angular/router';
-import { Aluno } from '../../../../common/aluno';
 //import { AlunoService } from './app/aluno.service';
 @Component({
   selector: 'app-pagina-inicial',

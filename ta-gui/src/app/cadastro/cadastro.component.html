@@ -18,23 +18,8 @@
      <td><label>senha </label></td>
      <td><input [(ngModel)]="aluno.senha" ></td>
   </tr>
-   <td><button (click)="criarAluno(aluno)">Adicionar</button></td>
+   <td><button (click)="cadastrarAluno()">Adicionar</button></td>
    
    </table>
    <button (click)="listarAlunos()">Listar</button>
-   <table>
-      <tr *ngIf="alunos.length > 0">
-         <th>Nome</th>
-         <th>CPF</th>
-         <th>e-mail</th>
-         <th>senha</th>
-      </tr>
-      <tr *ngFor="let a of alunos" name="alunolist">
-         <td name="nomelist">{{a.nome}}</td>
-         <td name="cpflist">{{a.cpf}}</td>
-         <td>{{a.email}}</td>
-         <td>{{a.senha}}</td>
-      </tr>
-      
-      </table>
   

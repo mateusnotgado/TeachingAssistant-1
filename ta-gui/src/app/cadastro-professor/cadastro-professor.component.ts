@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Professor } from '../../../../common/Professor';
 import { AlunoService } from '../services/aluno.service';
-import { cadastroProfessor } from '../services/cadastroProfessor.service';
+import { professorService } from '../services/professor.service';
+
 
 @Component({
   selector: 'app-cadastro-professor',
@@ -14,34 +15,41 @@ export class CadastroProfessorComponent implements OnInit {
  professor:Professor=new Professor();
  
  
-   constructor(private cadProfessor: cadastroProfessor) { }
+   constructor(private profService: professorService) { }
  
-  criarProfessor(p: Professor): void {
-     this.cadProfessor.criar(p)
-       .subscribe(
-         ar => {
-           if (ar) {
-             this.professores.push(ar);
-             this.professor= new Professor();
-             alert("aluno cadastrado com sucesso")
-           } else {
-             alert("aluno cadastrado sem sucesso")
-           }
-         },
-         msg => { alert(msg.message); }
-       );
-   }
- 
- 
-   onMove(): void {
-   
-   }
- 
-   ngOnInit(): void {
-     this.cadProfessor.getAlunos()
-       .subscribe(
-         as => { this.professores = as; },
-         msg => { alert(msg.message); }
-       );
-   }
+   cadastrarProfessor() {
+    this.profService.enviarProfessor(this.professor)
+      .subscribe({
+        next:  (message)=>{
+          alert(message.message);
+         
+          this.professor.nome="";
+          this.professor.cpf="";
+          this.professor.email="";
+          this.professor.senha="";
+        },
+        error:(err) => {
+           alert(err.error.err); 
+          }
+        })
+  }
+
+  listarProfessores (){
+    this.profService.getProfessores().subscribe({
+      next : (users) => {
+            this.professores=users;
+            console.log(this.professores)
+      },
+     error : () => {
+       alert("erro ao requisitar lista de alunos")
+ }
+    })
+  }
+  onMove(): void {
+  
+  }
+
+  ngOnInit(): void {
+    
+  }
 }

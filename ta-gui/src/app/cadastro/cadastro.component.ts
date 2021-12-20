@@ -1,6 +1,6 @@
 
-import { Component, OnInit } from '@angular/core';
-import { Aluno } from '../../../../common/aluno';
+import { Component, Injectable, OnInit } from '@angular/core';
+import { Aluno } from '../models/Aluno';
 import { AlunoService } from '../services/aluno.service';
 
 
@@ -8,6 +8,9 @@ import { AlunoService } from '../services/aluno.service';
   selector: 'cadastro',
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.css']
+})
+@Injectable({
+  providedIn: 'root',
 })
 export class CadastroComponent implements OnInit {
 
@@ -17,30 +20,31 @@ export class CadastroComponent implements OnInit {
 
   constructor(private alunoService: AlunoService) { }
 
- criarAluno(a: Aluno): void {
-    this.alunoService.criar(a)
-      .subscribe(
-        ar => {
-          if (ar) {
-            this.alunos.push(ar);
-            this.aluno = new Aluno();
-            alert("aluno cadastrado com sucesso")
-          } else {
-            alert("aluno cadastrado sem sucesso")
-          }
+ cadastrarAluno() {
+    this.alunoService.enviarAluno(this.aluno)
+      .subscribe({
+        next:  (message)=>{
+          alert(message.message);
+         
+          this.aluno.nome="";
+          this.aluno.cpf="";
+          this.aluno.email="";
+          this.aluno.senha="";
         },
-        msg => { alert(msg.message); }
-      );
-
+        error:(err) => {
+           alert(err.error.err); 
+          }
+        })
   }
 
   listarAlunos (){
     this.alunoService.getAlunos().subscribe({
       next : (users) => {
-            console.log(users)
+            this.alunos=users;
+            console.log(this.alunos)
       },
      error : () => {
-       alert("Deu merda carai")
+       alert("Requisição de lista de alunos invalida")
  }
     })
   }
@@ -49,10 +53,6 @@ export class CadastroComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.alunoService.getAlunos()
-      .subscribe(
-        as => { this.alunos = as; },
-        msg => { alert(msg.message); }
-      );
+    
   }
 }

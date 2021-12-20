@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AlunosComponent } from './alunos.component';
 import { AlunoService } from './services/aluno.service';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.component';
@@ -16,13 +15,12 @@ import { LoginProfessorComponent } from './login-professor/login-professor.compo
 import { PaginaDisciplinasComponent } from './pagina-disciplinas/pagina-disciplinas.component';
 import { PaginaOfertaDisciplinasComponent } from './pagina-oferta-disciplinas/pagina-oferta-disciplinas.component';
 import { DisciplinasService } from './services/disciplinas.service';
-import { cadastroProfessor } from './services/cadastroProfessor.service';
+import {  professorService } from './services/professor.service';
 import { Teste } from './services/teste.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AlunosComponent,
     CadastroComponent,
     PaginaInicialComponent,
     CadastroProfessorComponent,
@@ -38,10 +36,7 @@ import { Teste } from './services/teste.service';
     HttpClientModule,
     RouterModule.forRoot([
       
-      {
-        path: 'alunos',
-        component: AlunosComponent
-      },
+    
       {
         path: 'cadastro',
         component: CadastroComponent
@@ -72,7 +67,7 @@ import { Teste } from './services/teste.service';
       }
     ])
   ],
-  providers: [AlunoService,DisciplinasService,cadastroProfessor,Teste],
+  providers: [AlunoService,DisciplinasService,professorService,Teste],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

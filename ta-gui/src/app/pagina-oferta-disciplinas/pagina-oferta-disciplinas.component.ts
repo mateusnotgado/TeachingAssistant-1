@@ -8,7 +8,7 @@ import { DisciplinasService } from '../services/disciplinas.service';
   styleUrls: ['./pagina-oferta-disciplinas.component.css']
 })
 export class PaginaOfertaDisciplinasComponent implements OnInit {
-
+   
   disciplinas: Disciplina[]=[];
   titulo: string  = "Oferta de Disciplinas";
   constructor(private disciplinasService: DisciplinasService) { }
@@ -31,7 +31,7 @@ export class PaginaOfertaDisciplinasComponent implements OnInit {
     this.disciplinas.splice(index,1);
   }
   ngOnInit(): void {
-   this.getDisciplinas();
+   //this.getDisciplinas();
   }
 
 }

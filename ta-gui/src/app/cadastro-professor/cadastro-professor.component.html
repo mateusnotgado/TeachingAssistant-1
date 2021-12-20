@@ -18,22 +18,8 @@
      <td><label>senha </label></td>
      <td><input [(ngModel)]="professor.senha" ></td>
   </tr>
-   <td><button (click)="criarProfessor(professor)">Adicionar</button></td>
+   <td><button (click)="cadastrarProfessor()">Adicionar</button></td>
    </table>
-   <table>
-      <tr *ngIf="professores.length > 0">
-         <th>Nome</th>
-         <th>CPF</th>
-         <th>e-mail</th>
-         <th>senha</th>
-      </tr>
-      <tr *ngFor="let p of professores" name="alunolist">
-         <td name="nomelist">{{p.nome}}</td>
-         <td name="cpflist">{{p.cpf}}</td>
-         <td>{{p.email}}</td>
-         <td>{{p.senha}}</td>
-      </tr>
-      
-      </table>
+   
   
 

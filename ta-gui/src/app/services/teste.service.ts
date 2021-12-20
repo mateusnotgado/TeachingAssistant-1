@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { Aluno } from "../../../../common/aluno";
+import { Aluno } from "../models/Aluno";
 
 @Injectable()
 export class Teste {

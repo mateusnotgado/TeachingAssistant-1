@@ -8,16 +8,16 @@ alunoRouter.route("/cadastro")
 
 .get((req: Request, res: Response)=>{
   let alunos = alunoControl.getAlunos();
- return res.json({alunos});
+ return res.json(alunos);
 })
 .post((req: Request, res: Response)=>{
   let resposta=alunoControl.cadastrar(req.body);
   if(resposta=="cadastro feito com sucesso"){
-     return res.json({sucess:resposta});
+     return res.json({message:resposta});
   } else if (resposta=="Cpf já cadastrado"){
-    return res.json({error:resposta})
+    return res.status(409).json({err:resposta})
   } else {
-    return res.json({error:resposta})
+    return res.status(409).json({err:resposta})
   }
    
 });
@@ -28,9 +28,9 @@ alunoRouter.route("/login")
    let aluno = req.body;
    let log = alunoControl.encontrarAluno(aluno.cpf,aluno.senha);
    if(log==true){
-     return res.json({sucess:"permissão concedida"});
+     return res.json({message:"permissão concedida"});
    }else {
-    return res.json({error:"permissão negada"})
+    return res.status(409).json({err:"permissão negada"})
    }
     
  });

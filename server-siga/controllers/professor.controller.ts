@@ -3,12 +3,12 @@ import { Professor } from "../models/Professor";
 
 export class professorController {
     professores: Professor[] = [];
-
+     professor:Professor;
     constructor() {
         this.professores = [];
     }
 
-    getAlunos(): Professor[] {
+    getProfessores(): Professor[] {
         return this.professores;
     }
     cadastrar(professor: Professor): string {
@@ -37,5 +37,22 @@ export class professorController {
     cpfNaoCadastrado(cpf: string): boolean {
         return !this.professores.find(a => a.cpf == cpf);
     }
+   getPermissaoLogin(cpf:string,senha:string):boolean { // concede a permissão de login e salva no server quem esta
+     
+    
+     if(this.professorNaoEncontrado(cpf,senha)){
+         return false;
+     } else {
+         this.professor=this.professores.find(a => a.cpf == cpf);
+         return true;
+     }
+       
+   }
+getDadosLogin():Professor{
+ return this.professor;
+       }
 
+       professorNaoEncontrado (cpf:string,senha:string):boolean{
+           return !this.professores.find(a => a.cpf == cpf&&a.senha==senha);
+       }
 }

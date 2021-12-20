@@ -7,24 +7,36 @@ const professorRouter =Router();
 professorRouter.route("/cadastro")
 
 .get((req: Request, res: Response)=>{
-  let alunos = professorControl.getAlunos();
- return res.json({alunos});
+  let professor = professorControl.getProfessores();
+ return res.json(professor);
 })
 .post((req: Request, res: Response)=>{
   let resposta=professorControl.cadastrar(req.body);
   if(resposta=="cadastro feito com sucesso"){
-     return res.json({sucess:resposta});
+     return res.json({message:resposta});
   } else if (resposta=="Cpf já cadastrado"){
-    return res.json({error:resposta})
+    return res.status(409).json({err:resposta})
   } else {
-    return res.json({error:resposta})
+    return res.status(409).json({err:resposta})
   }
    
 });
 
 
 professorRouter.route("/login")
- .get((reg:Request, res: Response)=>{
-    return res.json({Hello:"login"});
+  .get((req:Request,res:Response)=>{
+    return res.json(professorControl.getDadosLogin())
+  })
+ .post((req:Request, res: Response)=>{
+   let cpf=req.body.cpf;
+   let senha=req.body.senha;
+   let permissao = professorControl.getPermissaoLogin(cpf,senha);
+   console.log(permissao+" "+cpf+" "+senha)
+   if(permissao){
+     return res.json({message:"Login feito"});
+   }else{
+      return res.status(409).json({err:"Cpf e/ou senha inválidos"});
+   }
+   
  });
  export default professorRouter;

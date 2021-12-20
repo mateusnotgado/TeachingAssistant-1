@@ -2,22 +2,20 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { retry, map } from 'rxjs/operators';
+import { Aluno } from '../models/Aluno';
 
-import { Aluno } from '../../../../common/aluno';
+
 
 @Injectable()
 export class AlunoService {
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  private taURL = 'http://localhost:8080';
+  private taURL = 'http://localhost:8081';
 
   constructor(private http: HttpClient) { }
 
-  criar(aluno: Aluno): Observable<Aluno> {
-    return this.http.post<any>(this.taURL + "/aluno/cadastro", aluno, { headers: this.headers })
-      .pipe(
-        retry(2),
-        map(res => { if (res.success) { return aluno; } else { return null; } })
-      );
+  enviarAluno(aluno: Aluno): Observable<any> {
+    return this.http.post<any>(this.taURL + "/aluno/cadastro", aluno)
+      
   }
 
   atualizar(aluno: Aluno): Observable<Aluno> {
