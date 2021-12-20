@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Disciplina } from '../../../../common/disciplina';
+import { Disciplina } from '../models/Disciplina';
 import { DisciplinasService } from '../services/disciplinas.service';
 
 @Component({
@@ -16,12 +16,12 @@ export class PaginaDisciplinasComponent implements OnInit {
   constructor(private disciplinasService: DisciplinasService) { }
   disciplina: Disciplina = new Disciplina();
   criarDisciplina(){
-    this.disciplina.name=this.name
-    this.disciplina.teacher=this.teacher
-    this.disciplina.hours=this.hours
-    this.disciplina.capacity=this.capacity
+   //this.disciplina.nome=this.name
+   /// this.disciplina.professor=this.teacher
+   // this.disciplina.hours=this.hours
+    //this.disciplina.capacity=this.capacity
     this.disciplinasService.criar(this.disciplina).subscribe({
-      next: (message) => {
+     next: (message) => {
         this.name= "";
         this.teacher= "";
         this.hours= "";

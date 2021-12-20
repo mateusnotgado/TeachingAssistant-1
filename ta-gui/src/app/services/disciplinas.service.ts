@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Disciplina } from '../../../../common/disciplina'
+import { Disciplina } from '../models/Disciplina'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { retry, map } from 'rxjs/operators';

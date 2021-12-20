@@ -5,7 +5,8 @@ import { PaginaOfertaDisciplinasComponent } from './pagina-oferta-disciplinas/pa
 
 const routes: Routes = [
   { path: 'app-pagina-oferta-disciplinas', component: PaginaOfertaDisciplinasComponent },
-  { path: 'app-pagina-cadastro-disciplinas', component: PaginaDisciplinasComponent }
+  { path: 'app-pagina-cadastro-disciplinas', component: PaginaDisciplinasComponent },
+  {path:'app-pagina-disciplinas',component:PaginaDisciplinasComponent}
 ];
 
 

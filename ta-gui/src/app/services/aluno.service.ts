@@ -32,5 +32,11 @@ export class AlunoService {
         retry(2)
       );
   }
-
+  logarAluno(cpf: string,senha: string): Observable<any> {
+    return this.http.post<any>(this.taURL + "/aluno/login",
+    {
+      cpf: cpf,
+      senha: senha
+    });
+  }
 }

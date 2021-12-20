@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Disciplina } from '../../../../common/disciplina';
+import { Disciplina } from '../models/Disciplina';
 import { DisciplinasService } from '../services/disciplinas.service';
 
 @Component({
