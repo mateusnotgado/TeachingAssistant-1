@@ -63,6 +63,12 @@ import { Teste } from './services/teste.service';
            path:'app-pagina-oferta-disciplinas',
            component:PaginaOfertaDisciplinasComponent
 
+      },
+
+      { 
+           path:'app-pagina-cadastro-disciplinas',
+           component:PaginaDisciplinasComponent
+
       }
     ])
   ],

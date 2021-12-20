@@ -1,7 +1,9 @@
 import express from 'express';
 import alunoRouter from './routes/aluno.routes';
+import disciplinaRouter from './routes/disciplina.routes';
+import professorRouter from './routes/professor.routes';
 const app = express();
-const port = 8080;
+const port = 8081;
 
 
 app.use(express.json());
@@ -15,6 +17,8 @@ var allowCrossDomain = function(req: any, res: any, next: any) {
 app.use(allowCrossDomain);
 
 app.use('/aluno',alunoRouter);
+app.use('/professor',professorRouter);
+app.use('/disciplina',disciplinaRouter);
 
 app.listen(port, ()=>{
     console.log(`Servido escutando na porta ${port}`);

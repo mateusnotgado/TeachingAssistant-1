@@ -6,8 +6,12 @@ import { Aluno } from "../../../../common/aluno";
 export class Teste {
     private aluno:Aluno=new Aluno();
     constructor(private router:Router){}
-logar(){
-    this.router.navigate(['./app-pagina-ofertar-disciplinas'])
+logarProfessor(){
+    this.router.navigate(['./app-pagina-cadastro-disciplinas'])
+    console.log("testandoooo")
+}
+logarAluno(){
+    this.router.navigate(['./app-pagina-oferta-disciplinas'])
     console.log("testandoooo")
 }
 }

@@ -22,5 +22,30 @@ export class Disciplina {
         this.capacity=0;
       }
     
+    clone(): Disciplina{
+        var disciplina: Disciplina = new Disciplina();
+        disciplina.name = this.name;
+        disciplina.teacher = this.teacher;
+        disciplina.hours = this.hours;
+        disciplina.capacity=this.capacity;
+        return disciplina;
+    }
+
+    copyFrom(from: Disciplina): void {
+        this.name = from.name;
+        this.teacher = from.teacher;
+        this.hours = from.hours;
+        this.capacity=from.capacity;
+    }
+
+    getNome ():string {
+        return this.name;
+      }
+
+    getProfessor ():string{
+        return this.teacher;
+    
+    }
+    
 
 }
