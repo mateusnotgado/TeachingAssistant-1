@@ -17,12 +17,21 @@ export class PaginaOfertaDisciplinasComponent implements OnInit {
     //this.disciplinas=this.disciplinasService.getDisciplinas();
   //  return this.disciplinas;
  // }
-
+ getDisciplinas(){
+  return this.disciplinasService.getDisciplinas().subscribe({
+    next: (disciplinas) =>{
+      this.disciplinas=disciplinas;
+    },
+    error:()=>{
+      alert("Não foi possível obter as disciplinas do servidor")
+    }
+  })
+}
   selecionarDisciplina(index: number): void{
     this.disciplinas.splice(index,1);
   }
   ngOnInit(): void {
-   // this.obterDisciplinas();
+   this.getDisciplinas();
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Teste } from '../services/teste.service';
 
 @Component({
   selector: 'app-login-aluno',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginAlunoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private teste:Teste) { }
 
   ngOnInit(): void {
+  }
+  fazerLogin(){
+    this.teste.logarAluno();
+   console.log("ola!!!!")
   }
 
 }

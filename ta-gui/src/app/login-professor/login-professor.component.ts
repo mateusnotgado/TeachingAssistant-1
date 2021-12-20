@@ -14,7 +14,7 @@ export class LoginProfessorComponent implements OnInit {
   ngOnInit(): void {
   }
   fazerLogin(){
-    this.teste.logar();
+    this.teste.logarProfessor();
    console.log("ola!!!!")
   }
 }

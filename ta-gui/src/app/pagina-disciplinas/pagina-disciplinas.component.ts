@@ -9,15 +9,38 @@ import { DisciplinasService } from '../services/disciplinas.service';
 })
 export class PaginaDisciplinasComponent implements OnInit {
   
-
+  name : string=""
+  teacher : string=""
+  hours : string=""
+  capacity : number=0
   constructor(private disciplinasService: DisciplinasService) { }
   disciplina: Disciplina = new Disciplina();
-  criarDisciplina(d: Disciplina) : void {
-    this.disciplinasService.criar(d)
+  criarDisciplina(){
+    this.disciplina.name=this.name
+    this.disciplina.teacher=this.teacher
+    this.disciplina.hours=this.hours
+    this.disciplina.capacity=this.capacity
+    this.disciplinasService.criar(this.disciplina).subscribe({
+      next: (message) => {
+        this.name= "";
+        this.teacher= "";
+        this.hours= "";
+        this.capacity =0;
+
+      },
+      error: ()=> {
+        alert("Não foi possível criar a disciplina")
+      }
+    })
     this.disciplina= new Disciplina();
   }
 
+
   ngOnInit(): void {
+    this.name= "";
+    this.teacher= "";
+    this.hours= "";
+    this.capacity =0;
   }
 
 }
