@@ -2,7 +2,7 @@ import { Aluno } from "../models/Aluno";
 
 export class alunoController {
     alunos:Aluno[]=[];
-
+    aluno:Aluno=new Aluno();
     constructor () {
         this.alunos=[];
     }
@@ -37,14 +37,20 @@ export class alunoController {
          return !this.alunos.find(a => a.cpf == cpf);
       }
 
-      encontrarAluno(cpf:string,senha:string):boolean{
-        let resultado = this.alunos.find(a => a.cpf == cpf&&a.senha==senha)
-        if(resultado==null){
-          return false;
+      getPermissaoLogin(cpf:string,senha:string):boolean { 
+        // concede a permissão de login e salva no server quem esta
+        if(this.professorNaoEncontrado(cpf,senha)){
+            return false;
         } else {
-          return true;
-        }
-         
+            this.aluno=this.alunos.find(a => a.cpf == cpf);
+            return true;
+           }  
       }
+      getDadosLogin():Aluno{
+       return this.aluno;
+          }
+          professorNaoEncontrado (cpf:string,senha:string):boolean{
+              return !this.alunos.find(a => a.cpf == cpf&&a.senha==senha);
+          }
       
 }
