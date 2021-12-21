@@ -25,7 +25,7 @@ alunoRouter.route("/cadastro")
 
 alunoRouter.route("/login")
   .get((req:Request,res:Response)=>{
-    return res.json(alunoControl.getDadosLogin())
+    return res.json(alunoControl.getAluno())
   })
  .post((req:Request, res: Response)=>{
    let cpf=req.body.cpf;
@@ -33,6 +33,7 @@ alunoRouter.route("/login")
    let permissao = alunoControl.getPermissaoLogin(cpf,senha);
    console.log(permissao+" "+cpf+" "+senha)
    if(permissao){
+     alunoControl.setAluno(cpf);
      return res.json({message:"Login feito"});
    }else{
       return res.status(409).json({err:"Cpf e/ou senha inválidos"});

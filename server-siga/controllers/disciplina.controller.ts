@@ -12,7 +12,7 @@ export class disciplinaController {
         return this.disciplinas;
     }
     cadastrar(disciplina: Disciplina): string {
-        var result = "cadastro feito com sucesso";
+        var result = "Cadastro feito com sucesso";
         this.disciplinas.push(disciplina);
         return result;
       }

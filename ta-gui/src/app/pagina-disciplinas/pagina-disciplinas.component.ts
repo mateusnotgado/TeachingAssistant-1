@@ -9,24 +9,18 @@ import { professorService } from '../services/professor.service';
   styleUrls: ['./pagina-disciplinas.component.css']
 })
 export class PaginaDisciplinasComponent implements OnInit {
-  nomeProfessor: String = "";
-  name : string=""
-  teacher : string=""
-  hours : string=""
-  capacity : number=0
+  nomeProfessorTela: String = "";
   constructor(private disciplinasService: DisciplinasService,private professor:professorService) { }
   disciplina: Disciplina = new Disciplina();
   criarDisciplina(){
-   //this.disciplina.nome=this.name
-   /// this.disciplina.professor=this.teacher
-   // this.disciplina.hours=this.hours
-    //this.disciplina.capacity=this.capacity
     this.disciplinasService.criar(this.disciplina).subscribe({
      next: (message) => {
-        this.name= "";
-        this.teacher= "";
-        this.hours= "";
-        this.capacity =0;
+        alert("Disciplina cadastrada com sucesso");
+        this.disciplina.nomeProfessor= "";
+        this.disciplina.nomeDisciplina= "";
+        this.disciplina.horarios= "";
+        this.disciplina.capacidade =0;
+        this.disciplina.totalDeAlunos=0;
 
       },
       error: ()=> {
@@ -38,7 +32,7 @@ export class PaginaDisciplinasComponent implements OnInit {
   getProfessor(){
     this.professor.getProfessorNome().subscribe(
       
-        as => {this.nomeProfessor=as;}
+        as => {this.nomeProfessorTela=as;}
       
        
         
@@ -47,10 +41,11 @@ export class PaginaDisciplinasComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.name= "";
-    this.teacher= "";
-    this.hours= "";
-    this.capacity =0;
+    this.disciplina.nomeProfessor= "";
+    this.disciplina.nomeDisciplina= "";
+    this.disciplina.horarios= "";
+    this.disciplina.capacidade =0;
+    this.disciplina.totalDeAlunos=0;
     this.getProfessor();
   }
 

@@ -3,6 +3,8 @@ import { Disciplina } from '../models/Disciplina';
 import { DisciplinasService } from '../services/disciplinas.service';
 import { LoginProfessorComponent } from '../login-professor/login-professor.component';
 import { professorService } from '../services/professor.service';
+import { disciplinaController } from '../../../../server-siga/controllers/disciplina.controller';
+import { AlunoService } from '../services/aluno.service';
 
 @Component({
   selector: 'app-pagina-oferta-disciplinas',
@@ -12,38 +14,35 @@ import { professorService } from '../services/professor.service';
 export class PaginaOfertaDisciplinasComponent implements OnInit {
   
   disciplinas: Disciplina[]=[];
-  nomeProfessor: String = "";
+  nomeAluno: String = "";
   titulo: string  = "Oferta de Disciplinas";
-  constructor(private disciplinasService: DisciplinasService, private professor:professorService) { }
+  constructor(private disciplinasService: DisciplinasService, private professor:professorService,private alunoService: AlunoService) { }
 
   //obterDisciplinas(): Disciplina[]{
     //this.disciplinas=this.disciplinasService.getDisciplinas();
   //  return this.disciplinas;
  // }
- getProfessor(){
-  this.professor.getProfessorNome().subscribe(
+ getAluno(){
+  this.alunoService.getAlunoNome().subscribe(
     
-      as => {this.nomeProfessor=as;}
+      as => {this.nomeAluno=as;}
     
      
       
   );
  }
- getDisciplinas(){
-  return this.disciplinasService.getDisciplinas().subscribe({
-    next: (disciplinas) =>{
-      this.disciplinas=disciplinas;
-    },
-    error:()=>{
-      alert("Não foi possível obter as disciplinas do servidor")
-    }
-  })
+ getListaDisciplinas(){
+  this.disciplinasService.getDisciplinas()
+  .subscribe(
+    disci => {this.disciplinas=disci;}
+  );
 }
   selecionarDisciplina(index: number): void{
     this.disciplinas.splice(index,1);
   }
   ngOnInit(): void {
-   this.getProfessor();
+   this.getAluno();
+   
   }
 
 }

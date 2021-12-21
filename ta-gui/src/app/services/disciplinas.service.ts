@@ -12,21 +12,17 @@ export class DisciplinasService {
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   private taURL = 'http://localhost:8086';
 
-  disciplinas: Disciplina[]=[];
   nomeProfessor:String="";
   constructor(private http: HttpClient) { 
-    this.disciplinas=[];
+
   }
-  criar(disciplina: Disciplina): Observable<Disciplina> {
-    return this.http.post<any>(this.taURL + "/disciplina", disciplina, { headers: this.headers })
-      .pipe(
-        retry(2),
-        map(res => { if (res.success) { return disciplina; } else { return null; } })
-      );
+  criar(disciplina: Disciplina): Observable<any> {
+    return this.http.post<any>(this.taURL + "/disciplina/cadastroDisciplina", disciplina)
+     
   }
 
   atualizar(disciplina: Disciplina): Observable<Disciplina> {
-    return this.http.put<any>(this.taURL + "/disciplina", JSON.stringify(disciplina), { headers: this.headers })
+    return this.http.put<any>(this.taURL + "/disciplina/cadastroDisciplina", JSON.stringify(disciplina), { headers: this.headers })
       .pipe(
         retry(2),
         map(res => { if (res.success) { return disciplina; } else { return null; } })
@@ -34,7 +30,7 @@ export class DisciplinasService {
   }
 
   getDisciplinas(): Observable<Disciplina[]> {
-    return this.http.get<Disciplina[]>(this.taURL + "/disciplinas")
+    return this.http.get<Disciplina[]>(this.taURL + "/disciplina/ofertaDisciplina")
       .pipe(
         retry(2)
       );

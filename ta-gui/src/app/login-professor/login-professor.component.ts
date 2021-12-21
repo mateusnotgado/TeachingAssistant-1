@@ -22,6 +22,7 @@ nome:string="";
     console.log(this.cpf+" "+this.senha)
     this.professor.logarProfessor(this.cpf,this.senha).subscribe({
       next:  (message)=>{
+        alert("Login feito");
         this.router.navigate(['./app-pagina-disciplinas'])
         this.cpf="";
         this.senha="";

@@ -10,6 +10,13 @@ export class alunoController {
     getAlunos():Aluno[]{
    return this.alunos;
     }
+    setAluno(cpf: String){
+        this.alunos=this.getAlunos();
+        this.aluno= this.alunos.find(a => a.cpf== cpf);
+    }
+    getAluno(): String{
+        return this.aluno.nome;
+    }
     cadastrar(aluno: Aluno): string {
         var result = "cadastro feito com sucesso";
         if (this.cpfNaoCadastrado(aluno.cpf)) {

@@ -1,17 +1,18 @@
 
 <h1>Oferta de disciplinas</h1>
-<h2>Seja bem vindo {{nomeProfessor}}</h2>
-<button (click)="getDisciplinas()"></button>
-  <table>
-      <ul>
-          <li *ngFor= "let d of disciplinas; index as i">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <td><button  >Selecionar</button></td>
-          </li>
-      </ul>
+<h2>Seja bem vindo {{nomeAluno}}</h2>
+<button (click)="getListaDisciplinas()">Obter disciplinas</button>
+<p>{{disciplinas.length}}</p>
+<ul *ngFor="let d of disciplinas">
+    <li>
+        <p>Nome da disciplina: {{d.nomeDisciplina}}</p>
+        <p>Nome do Professor: {{d.nomeProfessor}}</p>
+        <p>Horários: {{d.horarios}}</p>
+        <p>Vagas: {{d.capacidade}}</p>
+        <p>Vagas Preenchidas: {{d.totalDeAlunos}}</p>
+        <td><button  >Selecionar</button></td>
+    </li>
+</ul>
  
 
-    </table>
+

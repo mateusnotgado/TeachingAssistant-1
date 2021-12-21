@@ -1,25 +1,28 @@
 <html >
   <h1>Cadastro de disciplinas</h1>
-  <h2>Seja bem vindo {{nomeProfessor}}</h2>
+  <h2>Seja bem vindo {{nomeProfessorTela}}</h2>
   <table>
  <tr>
     <td><label>Professor</label></td>
-    <td><input  name="namebox" ></td>
-    
-  
+    <td><input [(ngModel)]="disciplina.nomeProfessor"  name="namebox" ></td>
+     
  </tr>
  <tr>
     <td><label>Nome da discipina </label></td>
-    <td><input  name="cpfbox"></td>
+    <td><input [(ngModel)]="disciplina.nomeDisciplina"  name="cpfbox"></td>
  </tr>
  <tr>
     <td><label>Horário</label></td>
-    <td><input ></td>
+    <td><input [(ngModel)]="disciplina.horarios"  ></td>
  </tr>
  <tr>
    <td><label>Quantidade de vagas </label></td>
-   <td><input type="number" ></td>
+   <td><input [(ngModel)]="disciplina.capacidade" type="number" ></td>
 </tr>  
+<tr>
+   <td><label>Vagas preenchidas</label></td>
+   <td><input [(ngModel)]="disciplina.totalDeAlunos"  ></td>
+</tr>
 <td><button (click)="criarDisciplina()">Adicionar</button></td>
  </table>
 
