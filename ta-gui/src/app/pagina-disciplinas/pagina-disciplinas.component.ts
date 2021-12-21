@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Disciplina } from '../models/Disciplina';
 import { DisciplinasService } from '../services/disciplinas.service';
+import { professorService } from '../services/professor.service';
 
 @Component({
   selector: 'app-pagina-disciplinas',
@@ -8,12 +9,12 @@ import { DisciplinasService } from '../services/disciplinas.service';
   styleUrls: ['./pagina-disciplinas.component.css']
 })
 export class PaginaDisciplinasComponent implements OnInit {
-  
+  nomeProfessor: String = "";
   name : string=""
   teacher : string=""
   hours : string=""
   capacity : number=0
-  constructor(private disciplinasService: DisciplinasService) { }
+  constructor(private disciplinasService: DisciplinasService,private professor:professorService) { }
   disciplina: Disciplina = new Disciplina();
   criarDisciplina(){
    //this.disciplina.nome=this.name
@@ -34,6 +35,15 @@ export class PaginaDisciplinasComponent implements OnInit {
     })
     this.disciplina= new Disciplina();
   }
+  getProfessor(){
+    this.professor.getProfessorNome().subscribe(
+      
+        as => {this.nomeProfessor=as;}
+      
+       
+        
+    );
+   }
 
 
   ngOnInit(): void {
@@ -41,6 +51,7 @@ export class PaginaDisciplinasComponent implements OnInit {
     this.teacher= "";
     this.hours= "";
     this.capacity =0;
+    this.getProfessor();
   }
 
 }

@@ -1,0 +1,1 @@
+{"version":3,"file":"disciplina.routes.js","sourceRoot":"","sources":["../../../routes/disciplina.routes.ts"],"names":[],"mappings":";;AAAA,qCAAkD;AAElD,MAAM,MAAM,GAAG,IAAA,gBAAM,GAAE,CAAC;AAExB,MAAM,CAAC,KAAK,CAAC,GAAG,CAAC;KACZ,GAAG,CAAC,CAAC,GAAY,EAAE,GAAa,EAAE,EAAE;IACjC,OAAO,GAAG,CAAC,IAAI,CAAC,EAAC,KAAK,EAAE,OAAO,EAAC,CAAC,CAAA;AACrC,CAAC,CAAC,CAAA;AACN,kBAAe,MAAM,CAAC"}

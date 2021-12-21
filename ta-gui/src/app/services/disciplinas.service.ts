@@ -10,9 +10,10 @@ import { retry, map } from 'rxjs/operators';
 export class DisciplinasService {
 
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  private taURL = 'http://localhost:8081';
+  private taURL = 'http://localhost:8086';
 
   disciplinas: Disciplina[]=[];
+  nomeProfessor:String="";
   constructor(private http: HttpClient) { 
     this.disciplinas=[];
   }

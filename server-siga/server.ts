@@ -3,7 +3,7 @@ import alunoRouter from './routes/aluno.routes';
 import disciplinaRouter from './routes/disciplina.routes';
 import professorRouter from './routes/professor.routes';
 const app = express();
-const port = 8081;
+const port = 8086;
 
 
 app.use(express.json());

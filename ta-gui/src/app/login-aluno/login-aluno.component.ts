@@ -20,7 +20,7 @@ senha:string="";
     this.alunoSer.logarAluno(this.cpf,this.senha).subscribe({
       next:  (message)=>{
         alert(message.message);
-        this.router.navigate(['./app-pagina-disciplinas'])
+        this.router.navigate(['./app-pagina-oferta-disciplinas'])
         this.cpf="";
         this.senha="";
       },

@@ -3,13 +3,21 @@ import { Professor } from "../models/Professor";
 
 export class professorController {
     professores: Professor[] = [];
-     professor:Professor;
+    professor:Professor;
     constructor() {
         this.professores = [];
     }
 
     getProfessores(): Professor[] {
         return this.professores;
+    }
+
+    setProfessor(cpf: String){
+        this.professores=this.getProfessores();
+        this.professor= this.professores.find(p => p.cpf== cpf);
+    }
+    getProfessor(): String{
+        return this.professor.nome;
     }
     cadastrar(professor: Professor): string {
         var result = "cadastro feito com sucesso";

@@ -7,7 +7,7 @@ const professorRouter =Router();
 professorRouter.route("/cadastro")
 
 .get((req: Request, res: Response)=>{
-  let professor = professorControl.getProfessores();
+  let professor = professorControl.getProfessor();
  return res.json(professor);
 })
 .post((req: Request, res: Response)=>{
@@ -33,7 +33,8 @@ professorRouter.route("/login")
    let permissao = professorControl.getPermissaoLogin(cpf,senha);
    console.log(permissao+" "+cpf+" "+senha)
    if(permissao){
-     return res.json({message:"Login feito"});
+    professorControl.setProfessor(cpf);
+    return res.json({message:"Login feito"});
    }else{
       return res.status(409).json({err:"Cpf e/ou senha inválidos"});
    }

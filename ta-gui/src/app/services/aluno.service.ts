@@ -9,7 +9,7 @@ import { Aluno } from '../models/Aluno';
 @Injectable()
 export class AlunoService {
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  private taURL = 'http://localhost:8081';
+  private taURL = 'http://localhost:8086';
 
   constructor(private http: HttpClient) { }
 
