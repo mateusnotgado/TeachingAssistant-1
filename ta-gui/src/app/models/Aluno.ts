@@ -1,8 +1,11 @@
+import { Disciplina } from "./Disciplina";
+
 export class Aluno {
     nome: string;
     cpf: string;
     email: string;
     senha: string;
+    listaDeMatriculas:Disciplina[];
   constructor() {
     this.clean();
   }
@@ -12,6 +15,7 @@ export class Aluno {
     this.cpf = "";
     this.email = "";
     this.senha="";
+    this.listaDeMatriculas=[];
   }
 
   clone(): Aluno {

@@ -16,6 +16,8 @@ export class PaginaOfertaDisciplinasComponent implements OnInit {
   disciplinas: Disciplina[]=[];
   nomeAluno: String = "";
   titulo: string  = "Oferta de Disciplinas";
+  num:number[]=[1,2,3,4,5,6];
+  
   constructor(private disciplinasService: DisciplinasService, private professor:professorService,private alunoService: AlunoService) { }
 
   //obterDisciplinas(): Disciplina[]{

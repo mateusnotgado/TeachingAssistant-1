@@ -12,7 +12,6 @@ import { DisciplinasService } from '../services/disciplinas.service';
 export class LoginProfessorComponent implements OnInit {
 cpf:string="";
 senha:string="";
-nome:string="";
 
   constructor(private disci: DisciplinasService,private professor:professorService,private router:Router) { }
 
@@ -26,7 +25,6 @@ nome:string="";
         this.router.navigate(['./app-pagina-disciplinas'])
         this.cpf="";
         this.senha="";
-        (        as: string)=>{this.disci.nomeProfessor=as;};
       },
       error:(err) => {
          alert(err.error.err); 

@@ -1,4 +1,5 @@
 import { Aluno } from "../models/Aluno";
+import { Disciplina } from "../models/Disciplina";
 
 export class alunoController {
     alunos:Aluno[]=[];
@@ -46,7 +47,7 @@ export class alunoController {
 
       getPermissaoLogin(cpf:string,senha:string):boolean { 
         // concede a permissão de login e salva no server quem esta
-        if(this.professorNaoEncontrado(cpf,senha)){
+        if(this.alunoNaoEncontrado(cpf,senha)){
             return false;
         } else {
             this.aluno=this.alunos.find(a => a.cpf == cpf);
@@ -56,8 +57,24 @@ export class alunoController {
       getDadosLogin():Aluno{
        return this.aluno;
           }
-          professorNaoEncontrado (cpf:string,senha:string):boolean{
+          alunoNaoEncontrado (cpf:string,senha:string):boolean{
               return !this.alunos.find(a => a.cpf == cpf&&a.senha==senha);
           }
       
+      
+      
+          matricula(disciplinas:Disciplina[]):void {
+            
+        for(let i=0;i<disciplinas.length;i++){
+          this.aluno.listaDeMatriculas.push(disciplinas[i]);
+        }
+      }
+
+      temDisciplina(disciplinas:Disciplina[]):boolean{
+        if(disciplinas.length>0){
+          return true;
+        }else {
+          return false;
+        }
+      }
 }

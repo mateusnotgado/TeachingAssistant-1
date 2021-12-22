@@ -16,9 +16,7 @@ export class professorController {
         this.professores=this.getProfessores();
         this.professor= this.professores.find(p => p.cpf== cpf);
     }
-    getProfessor(): String{
-        return this.professor.nome;
-    }
+    
     cadastrar(professor: Professor): string {
         var result = "cadastro feito com sucesso";
         if (this.cpfNaoCadastrado(professor.cpf)) {

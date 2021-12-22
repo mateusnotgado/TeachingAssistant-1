@@ -1,30 +1,59 @@
-<html >
+
+ <div >
+   
   <h1>Cadastro de disciplinas</h1>
-  <h2>Seja bem vindo {{nomeProfessorTela}}</h2>
+  <h2>Seja bem vindo {{prof.nome}}</h2>
   <table>
- <tr>
-    <td><label>Professor</label></td>
-    <td><input [(ngModel)]="disciplina.nomeProfessor"  name="namebox" ></td>
-     
- </tr>
  <tr>
     <td><label>Nome da discipina </label></td>
     <td><input [(ngModel)]="disciplina.nomeDisciplina"  name="cpfbox"></td>
  </tr>
  <tr>
-    <td><label>Horário</label></td>
-    <td><input [(ngModel)]="disciplina.horarios"  ></td>
+    <td><label>Horário do começo da aula</label></td>
+    <td><input type="time" [(ngModel)]="disciplina.horarioDocomeco" ></td>
  </tr>
+ <tr>
+   <td><label>Horário do fim da aula</label></td>
+   <td><input type="time" [(ngModel)]="disciplina.horarioDoFim" ></td>
+</tr>
+<tr>
+   <td><label>Dia</label></td>
+   <td> 
+      <select [(ngModel)]="disciplina.dia">
+         <option *ngFor="let d of dias" [ngValue]="d">{{d}}</option>
+       </select>
+      </td>
+</tr>
  <tr>
    <td><label>Quantidade de vagas </label></td>
    <td><input [(ngModel)]="disciplina.capacidade" type="number" ></td>
 </tr>  
-<tr>
-   <td><label>Vagas preenchidas</label></td>
-   <td><input [(ngModel)]="disciplina.totalDeAlunos"  ></td>
-</tr>
+
 <td><button (click)="criarDisciplina()">Adicionar</button></td>
  </table>
-
+ </div>
+ 
+ <div >
+   <table id="lista">
+      <thead>
+          <tr>
+              <th>Disciplina</th>
+              <th>Nome</th>
+              <th>Dia</th>
+              <th>Começo</th>
+              <th>fim</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let disciplina of disciplinas">
+              <td>{{disciplina.nomeDisciplina}}</td>
+              <td>{{disciplina.nomeProfessor}}</td>
+              <td>{{disciplina.dia}}</td>
+              <td>{{disciplina.horarioDocomeco}}</td>
+              <td>{{disciplina.horarioDoFim}}</td>
+          </tr>
+      </tbody>
+  </table>
+ </div>
 
 

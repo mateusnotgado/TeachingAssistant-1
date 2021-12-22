@@ -20,3 +20,8 @@ button {
 button:hover {
   opacity: 0.8;
 }
+ul
+{
+float:left;
+margin:0 5px;
+}

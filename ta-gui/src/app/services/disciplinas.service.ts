@@ -21,14 +21,6 @@ export class DisciplinasService {
      
   }
 
-  atualizar(disciplina: Disciplina): Observable<Disciplina> {
-    return this.http.put<any>(this.taURL + "/disciplina/cadastroDisciplina", JSON.stringify(disciplina), { headers: this.headers })
-      .pipe(
-        retry(2),
-        map(res => { if (res.success) { return disciplina; } else { return null; } })
-      );
-  }
-
   getDisciplinas(): Observable<Disciplina[]> {
     return this.http.get<Disciplina[]>(this.taURL + "/disciplina/ofertaDisciplina")
       .pipe(

@@ -1,7 +1,10 @@
 export class Disciplina {
     nomeDisciplina : string;
     nomeProfessor : string;
-    horarios:string;
+    cpfDoProfessor:string;
+    horarioDocomeco:string;
+    horarioDoFim:string;
+    dia:string;
     capacidade : number;
     totalDeAlunos:number;
 
@@ -11,13 +14,19 @@ export class Disciplina {
 
     criar (nomeDisciplina : string,
         nomeProfessor : string,
-        horarios:string,
+        cpfDoProfessor:string,
+        começo:string,
+        fim:string,
+        dia:string,
         capacidade : number,
         totalDeAlunos:number
     ) :void{
         this.nomeDisciplina=nomeDisciplina;
         this.nomeProfessor =nomeProfessor;
-        this.horarios=horarios;
+        this.cpfDoProfessor=cpfDoProfessor;
+        this.horarioDocomeco=começo;
+        this.horarioDoFim=fim;
+        this.dia=dia;
         this.capacidade =capacidade;
         this.totalDeAlunos= totalDeAlunos;
        } 
@@ -25,7 +34,10 @@ export class Disciplina {
     clean(): void {
         this.nomeDisciplina="";
         this.nomeProfessor ="";
-        this.horarios="";
+        this.cpfDoProfessor="";
+        this.horarioDocomeco="";
+        this.horarioDoFim="";
+        this.dia="";
         this.capacidade =0;
         this.totalDeAlunos= 0;
       }

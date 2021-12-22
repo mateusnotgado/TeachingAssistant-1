@@ -16,10 +16,7 @@ export class CadastroComponent implements OnInit {
 
  alunos:Aluno[]=[];
  aluno:Aluno=new Aluno();
-
-
   constructor(private alunoService: AlunoService) { }
-
  cadastrarAluno() {
     this.alunoService.enviarAluno(this.aluno)
       .subscribe({

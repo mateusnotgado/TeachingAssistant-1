@@ -39,5 +39,15 @@ alunoRouter.route("/login")
       return res.status(409).json({err:"Cpf e/ou senha inválidos"});
    }
    
+ })
+ .put((req:Request,res:Response)=>{
+   let temDisciplina = alunoControl.temDisciplina(req.body);
+   if(temDisciplina){
+     alunoControl.matricula(req.body);
+    return res.json({message:"Matriclua feita"});
+   }else {
+return res.status(409).json({err:"Nenhuma disciplina selecionada"})
+   }
+   
  });
  export default alunoRouter;

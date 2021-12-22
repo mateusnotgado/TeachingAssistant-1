@@ -23,8 +23,8 @@ export class professorService {
         retry(2)
       );
   }
-  getProfessorNome(): Observable<String> {
-    return this.http.get<String>(this.taURL + "/professor/cadastro")
+  getDadosdeLogin(): Observable<Professor> {
+    return this.http.get<Professor>(this.taURL + "/professor/login")
       .pipe(
         retry(2)
       );

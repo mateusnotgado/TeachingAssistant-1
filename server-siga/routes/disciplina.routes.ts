@@ -14,12 +14,17 @@ disciplinaRouter.route("/cadastroDisciplina")
     return res.json(disciplinas);
 })
 .post((req: Request, res: Response)=>{
-    let resposta=disciplinaControl.cadastrar(req.body);
-    if(resposta=="Cadastro feito com sucesso"){
-      return res.json({sucess:resposta});
-    } else {
-      return res.json({error:resposta})
+  let disciplina=req.body;
+    let resposta=disciplinaControl.camposPreenchidos(disciplina);
+    if(!resposta){
+     return res.status(409).json({error:"Por favor preencha todos os campos"})
     }
+    resposta=disciplinaControl.checarClonflitos(disciplina);
+    if(resposta){
+      return res.status(409).json({error:"Conflito detectado, por favor verifique os horários"})
+    }
+    disciplinaControl.cadastrar(disciplina);
+    return res.json({sucess:"Cadastro feito com sucesso"});
     })
   .put((req: Request, res: Response)=>{
       return res.json({Warning:"Funcionando"});

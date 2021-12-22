@@ -16,7 +16,6 @@ import { PaginaDisciplinasComponent } from './pagina-disciplinas/pagina-discipli
 import { PaginaOfertaDisciplinasComponent } from './pagina-oferta-disciplinas/pagina-oferta-disciplinas.component';
 import { DisciplinasService } from './services/disciplinas.service';
 import {  professorService } from './services/professor.service';
-import { Teste } from './services/teste.service';
 
 @NgModule({
   declarations: [
@@ -67,7 +66,7 @@ import { Teste } from './services/teste.service';
       }
     ])
   ],
-  providers: [AlunoService,DisciplinasService,professorService,Teste],
+  providers: [AlunoService,DisciplinasService,professorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

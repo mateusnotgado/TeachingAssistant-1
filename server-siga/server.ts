@@ -15,7 +15,6 @@ var allowCrossDomain = function(req: any, res: any, next: any) {
     next();
 }
 app.use(allowCrossDomain);
-
 app.use('/aluno',alunoRouter);
 app.use('/professor',professorRouter);
 app.use('/disciplina',disciplinaRouter);

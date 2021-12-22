@@ -7,8 +7,9 @@ const professorRouter =Router();
 professorRouter.route("/cadastro")
 
 .get((req: Request, res: Response)=>{
-  let professor = professorControl.getProfessor();
- return res.json(professor);
+  let professores =professorControl.getProfessores();
+  console.log(professores);
+ return res.json({professores});
 })
 .post((req: Request, res: Response)=>{
   let resposta=professorControl.cadastrar(req.body);
@@ -31,7 +32,6 @@ professorRouter.route("/login")
    let cpf=req.body.cpf;
    let senha=req.body.senha;
    let permissao = professorControl.getPermissaoLogin(cpf,senha);
-   console.log(permissao+" "+cpf+" "+senha)
    if(permissao){
     professorControl.setProfessor(cpf);
     return res.json({message:"Login feito"});
