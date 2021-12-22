@@ -5,6 +5,7 @@ import { LoginProfessorComponent } from '../login-professor/login-professor.comp
 import { professorService } from '../services/professor.service';
 import { disciplinaController } from '../../../../server-siga/controllers/disciplina.controller';
 import { AlunoService } from '../services/aluno.service';
+import { Aluno } from '../models/Aluno';
 
 @Component({
   selector: 'app-pagina-oferta-disciplinas',
@@ -14,20 +15,27 @@ import { AlunoService } from '../services/aluno.service';
 export class PaginaOfertaDisciplinasComponent implements OnInit {
   
   disciplinas: Disciplina[]=[];
-  nomeAluno: String = "";
-  titulo: string  = "Oferta de Disciplinas";
-  num:number[]=[1,2,3,4,5,6];
+  disciplinasMatriculadas:Disciplina[];
+  aluno:Aluno;
+ 
   
-  constructor(private disciplinasService: DisciplinasService, private professor:professorService,private alunoService: AlunoService) { }
+  constructor(private disciplinasService: DisciplinasService,private alunoService: AlunoService) { }
 
   //obterDisciplinas(): Disciplina[]{
     //this.disciplinas=this.disciplinasService.getDisciplinas();
   //  return this.disciplinas;
  // }
  getAluno(){
-  this.alunoService.getAlunoNome().subscribe(
+  this.alunoService.getAluno().subscribe({
+     next: (message) => {
+        this.aluno=message;
+      },
+      error:()=>{
+       alert("falha ao pegar os dados do aluno")
+      }
+  }
     
-      as => {this.nomeAluno=as;}
+     
     
      
       
@@ -44,7 +52,7 @@ export class PaginaOfertaDisciplinasComponent implements OnInit {
   }
   ngOnInit(): void {
    this.getAluno();
-   
+   this.getListaDisciplinas();
   }
 
 }

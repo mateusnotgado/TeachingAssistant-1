@@ -1,37 +1,55 @@
 
 <h1>Oferta de disciplinas</h1>
-<h2>Seja bem vindo {{nomeAluno}}</h2>
-<!--ul *ngFor="let d of num">
-    <li>
-        d
-    </li>
-</ul>
+<h2>Seja bem vindo {{aluno.nome}}</h2>
 
-   <ul *ngFor="let d of num">
-    <li>
-        d
-    </li>
-</ul-->
-
-<ul>
-    <li *ngFor="let d of num">1</li>
-   
-</ul>
-
-<ul>
-   <li *ngFor="let d of num">3</li>
-   
-</ul>
-
-<!--button (click)="getListaDisciplinas()">Obter disciplinas</button>
-<p>{{disciplinas.length}}</p-->
-<!--ul *ngFor="let d of disciplinas">
-    <li>
-        <p>Nome da disciplina: {{d.nomeDisciplina}}</p>
-        <p>Nome do Professor: {{d.nomeProfessor}}</p>
-        <p>Horários: {{d.horarios}}</p>
-        <p>Vagas: {{d.capacidade}}</p>
-        <p>Vagas Preenchidas: {{d.totalDeAlunos}}</p>
-        <td><button  >Selecionar</button></td>
-    </li>
-</ul-->
+<div class="row">
+    <div class="column">
+        <h2>Disciplinas matriculadas</h2>
+        <table id="lista">
+            <thead>
+                <tr>
+                    <th>Disciplina</th>
+                    <th>Nome</th>
+                    <th>Dia</th>
+                    <th>Começo</th>
+                    <th>fim</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let disciplina of aluno.listaDeMatriculas">
+                    <td>{{disciplina.nomeDisciplina}}</td>
+                    <td>{{disciplina.nomeProfessor}}</td>
+                    <td>{{disciplina.dia}}</td>
+                    <td>{{disciplina.horarioDocomeco}}</td>
+                    <td>{{disciplina.horarioDoFim}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="column">
+        <h2>Disciplinas disponíveis</h2>
+        <table id="lista">
+            <thead>
+                <tr>
+                    <th>Disciplina</th>
+                    <th>Nome</th>
+                    <th>Dia</th>
+                    <th>Começo</th>
+                    <th>fim</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let disciplina of disciplinas;index as i">
+                    <td>{{disciplina.nomeDisciplina}}</td>
+                    <td>{{disciplina.nomeProfessor}}</td>
+                    <td>{{disciplina.dia}}</td>
+                    <td>{{disciplina.horarioDocomeco}}</td>
+                    <td>{{disciplina.horarioDoFim}}</td>
+                    <td><button>Matricular</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  </div>

@@ -32,8 +32,8 @@ export class AlunoService {
         retry(2)
       );
   }
-  getAlunoNome(): Observable<String> {
-    return this.http.get<String>(this.taURL + "/aluno/login")
+  getAluno(): Observable<Aluno> {
+    return this.http.get<Aluno>(this.taURL + "/aluno/login")
       .pipe(
         retry(2)
       );

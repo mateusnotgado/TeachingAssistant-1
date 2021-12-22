@@ -15,8 +15,8 @@ export class alunoController {
         this.alunos=this.getAlunos();
         this.aluno= this.alunos.find(a => a.cpf== cpf);
     }
-    getAluno(): String{
-        return this.aluno.nome;
+    getAluno(): Aluno{
+        return this.aluno;
     }
     cadastrar(aluno: Aluno): string {
         var result = "cadastro feito com sucesso";
