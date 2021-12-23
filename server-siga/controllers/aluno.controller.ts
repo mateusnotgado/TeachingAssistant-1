@@ -12,7 +12,6 @@ export class alunoController {
    return this.alunos;
     }
     setAluno(cpf: String){
-        this.alunos=this.getAlunos();
         this.aluno= this.alunos.find(a => a.cpf== cpf);
     }
     getAluno(): Aluno{
@@ -50,7 +49,6 @@ export class alunoController {
         if(this.alunoNaoEncontrado(cpf,senha)){
             return false;
         } else {
-            this.aluno=this.alunos.find(a => a.cpf == cpf);
             return true;
            }  
       }
@@ -63,18 +61,62 @@ export class alunoController {
       
       
       
-          matricula(disciplinas:Disciplina[]):void {
+          matricula(disciplina:Disciplina,aluno:Aluno):boolean {
             
-        for(let i=0;i<disciplinas.length;i++){
-          this.aluno.listaDeMatriculas.push(disciplinas[i]);
+        for(let i=0;i<this.alunos.length;i++){
+          if(aluno.cpf==this.alunos[i].cpf){
+           if(this.checarClonflitos(disciplina,i)) {
+             return true;
+           } else {
+             this.alunos[i].listaDeMatriculas.push(disciplina);
+           }
+          }
+         
         }
+        return false;
       }
-
-      temDisciplina(disciplinas:Disciplina[]):boolean{
-        if(disciplinas.length>0){
+      converterTempoParaMinutos(horario:string):number{
+        let horarios=horario.split(":");
+        let horas =parseInt(horarios[0]);
+        let minutos =parseInt(horarios[1]);
+       let  tempoEmMinutos = minutos+horas*60;
+        return tempoEmMinutos;
+      }
+     
+     checarClonflitos(disciplina:Disciplina,index:number):boolean{
+         let resultado = this.alunos[index].listaDeMatriculas.find(d =>this.condicaoDeConflito(
+            disciplina.dia,disciplina.horarioDocomeco,disciplina.horarioDoFim,
+           d.dia,d.horarioDocomeco,d.horarioDoFim));
+         if(resultado==null){
+           return false;
+         } else {
+           return true;
+         }
+    
+       }
+       condicaoDeConflito(dia:string,comeco:string,fim:string,dia2:string,
+        comeco2:string,fim2:string):boolean {
+          let comecoEmMin=this.converterTempoParaMinutos(comeco);
+          let fimEmMin=this.converterTempoParaMinutos(fim);
+          let comeco2EmMin=this.converterTempoParaMinutos(comeco2);
+          let fim2EmMin=this.converterTempoParaMinutos(fim2);
+          let conflitoHorario=this.conflitoDeHorario(comecoEmMin,fimEmMin,comeco2EmMin,fim2EmMin);
+          return this.mesmoDia(dia,dia2)&&conflitoHorario;
+       }
+       mesmoDia(dia1:string,dia2:string):boolean {
+       return dia1==dia2;
+       }
+       conflitoDeHorario(comeco1:number,fim1:number,comeco2:number,fim2:number):boolean {
+         if(comeco1>=comeco2&&fim1<=fim2){
+           return true;
+         } 
+         if(comeco1<=comeco2&&fim1>comeco2){
+           return true;
+         }
+        if(comeco1<fim2&&fim1>=fim2){
           return true;
-        }else {
-          return false;
-        }
-      }
+        } 
+        return false;
+       }
+      
 }

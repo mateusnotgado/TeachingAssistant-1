@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { retry, map } from 'rxjs/operators';
+import { retry} from 'rxjs/operators';
 import { Aluno } from '../models/Aluno';
+import { Disciplina } from '../models/Disciplina';
 
 
 
@@ -18,20 +19,6 @@ export class AlunoService {
       
   }
 
-  atualizar(aluno: Aluno): Observable<Aluno> {
-    return this.http.put<any>(this.taURL + "/aluno", JSON.stringify(aluno), { headers: this.headers })
-      .pipe(
-        retry(2),
-        map(res => { if (res.success) { return aluno; } else { return null; } })
-      );
-  }
-
-  getAlunos(): Observable<Aluno[]> {
-    return this.http.get<Aluno[]>(this.taURL + "/aluno/cadastro")
-      .pipe(
-        retry(2)
-      );
-  }
   getAluno(): Observable<Aluno> {
     return this.http.get<Aluno>(this.taURL + "/aluno/login")
       .pipe(
@@ -43,6 +30,13 @@ export class AlunoService {
     {
       cpf: cpf,
       senha: senha
+    });
+  }
+  matricularAluno(disciplina:Disciplina,aluno:Aluno):Observable<any>{
+    return this.http.put<any>(this.taURL + "/aluno/login",
+    {
+      disciplina:disciplina,
+     aluno:aluno
     });
   }
 }

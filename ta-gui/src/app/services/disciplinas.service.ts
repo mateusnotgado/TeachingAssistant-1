@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Disciplina } from '../models/Disciplina'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { retry, map } from 'rxjs/operators';
+import { retry} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,19 +13,21 @@ export class DisciplinasService {
   private taURL = 'http://localhost:8086';
 
   nomeProfessor:String="";
-  constructor(private http: HttpClient) { 
-
-  }
+  constructor(private http: HttpClient) { }
   criar(disciplina: Disciplina): Observable<any> {
     return this.http.post<any>(this.taURL + "/disciplina/cadastroDisciplina", disciplina)
      
   }
-
+  
   getDisciplinas(): Observable<Disciplina[]> {
     return this.http.get<Disciplina[]>(this.taURL + "/disciplina/ofertaDisciplina")
       .pipe(
         retry(2)
       );
   }
+
+temVaga():Observable<any>{
+return this.http.get<any>(this.taURL)
+}
 }
 

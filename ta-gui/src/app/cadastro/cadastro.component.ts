@@ -34,17 +34,7 @@ export class CadastroComponent implements OnInit {
         })
   }
 
-  listarAlunos (){
-    this.alunoService.getAlunos().subscribe({
-      next : (users) => {
-            this.alunos=users;
-            console.log(this.alunos)
-      },
-     error : () => {
-       alert("Requisição de lista de alunos invalida")
- }
-    })
-  }
+  
   onMove(): void {
   
   }

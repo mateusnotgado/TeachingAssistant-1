@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AlunoService } from './services/aluno.service';
 import { CadastroComponent } from './cadastro/cadastro.component';
-import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.component';
 import { CadastroProfessorComponent } from './cadastro-professor/cadastro-professor.component';
 import { LoginAlunoComponent } from './login-aluno/login-aluno.component';
 import { LoginProfessorComponent } from './login-professor/login-professor.component';
@@ -21,7 +20,6 @@ import {  professorService } from './services/professor.service';
   declarations: [
     AppComponent,
     CadastroComponent,
-    PaginaInicialComponent,
     CadastroProfessorComponent,
     LoginAlunoComponent,
     LoginProfessorComponent,

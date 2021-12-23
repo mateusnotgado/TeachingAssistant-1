@@ -31,7 +31,6 @@ alunoRouter.route("/login")
    let cpf=req.body.cpf;
    let senha=req.body.senha;
    let permissao = alunoControl.getPermissaoLogin(cpf,senha);
-   console.log(permissao+" "+cpf+" "+senha)
    if(permissao){
      alunoControl.setAluno(cpf);
      return res.json({message:"Login feito"});
@@ -41,12 +40,11 @@ alunoRouter.route("/login")
    
  })
  .put((req:Request,res:Response)=>{
-   let temDisciplina = alunoControl.temDisciplina(req.body);
-   if(temDisciplina){
-     alunoControl.matricula(req.body);
-    return res.json({message:"Matriclua feita"});
+  let temConflito= alunoControl.matricula(req.body.disciplina,req.body.aluno)
+   if(temConflito){
+    return res.status(409).json({err:"Disciplina não pode ser cadastrada por conflitos de horário"});
    }else {
-return res.status(409).json({err:"Nenhuma disciplina selecionada"})
+return res.json({message:"Matricula feita com sucesso"})
    }
    
  });

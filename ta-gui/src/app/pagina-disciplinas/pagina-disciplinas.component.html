@@ -26,7 +26,7 @@
 </tr>
  <tr>
    <td><label>Quantidade de vagas </label></td>
-   <td><input [(ngModel)]="disciplina.capacidade" type="number" ></td>
+   <td><input [(ngModel)]="disciplina.capacidade" type="number" min="0" ></td>
 </tr>  
 
 <td><button (click)="criarDisciplina()">Adicionar</button></td>

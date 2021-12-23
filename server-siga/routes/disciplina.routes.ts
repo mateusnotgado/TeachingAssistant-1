@@ -27,9 +27,8 @@ disciplinaRouter.route("/cadastroDisciplina")
     return res.json({sucess:"Cadastro feito com sucesso"});
     })
   .put((req: Request, res: Response)=>{
-      return res.json({Warning:"Funcionando"});
-  })
-    ;
+      return res.json({Warning:"Put não suportado para essa rota"});
+  });
 
     
 
@@ -40,6 +39,8 @@ disciplinaRouter.route("/ofertaDisciplina")
     let disciplinas = disciplinaControl.getDisciplinas();
     return res.json(disciplinas);
   })
- 
+  .put((req: Request, res: Response)=>{
+    return res.json({Warning:"Put não suportado para essa rota"});
+})
 
 export default disciplinaRouter;

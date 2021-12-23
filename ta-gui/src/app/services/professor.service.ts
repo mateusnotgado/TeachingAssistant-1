@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { retry, map } from 'rxjs/operators';
-import { Professor } from '../../../../common/Professor';
+import { Professor } from '../models/Professor';
 @Injectable()
 export class professorService {
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
