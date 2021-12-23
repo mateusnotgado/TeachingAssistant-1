@@ -39,4 +39,14 @@ export class AlunoService {
      aluno:aluno
     });
   }
+  temVaga(index:number):Observable<any>{
+    return this.http.put<any>(this.taURL + "/disciplina/ofertaDisciplina",
+    { index:index }
+    );
+  }
+  preencherVaga(index:number):Observable<any>{
+    return this.http.put<any>(this.taURL + "/disciplina/pegarVaga",
+    { index:index }
+    );
+  }
 }

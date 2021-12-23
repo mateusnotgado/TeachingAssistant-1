@@ -30,18 +30,39 @@ export class PaginaOfertaDisciplinasComponent implements OnInit {
     disci => {this.disciplinas=disci;}
   );
 }
+temVaga(index:number){
+  this.alunoService.temVaga(index).subscribe({
+    next: () => {
+    this.matricular(index);
+    },
+    error:(err)=>{
+     alert(err.error.err);
+    }
+  })
+}
+pegarVaga(index:number){
+this.alunoService.preencherVaga(index).subscribe({
+  next : ()=>{
+        console.log("vaga preenchida");
+  },
+  error:()=>{
 
-matricular(index:number){
-  
+  }
+})
+}
+matricular(index:number):boolean{
   this.alunoService.matricularAluno(this.disciplinas[index],this.aluno).subscribe({
     next: (message) => {
        this.aluno.listaDeMatriculas.push(this.disciplinas[index]);
+       this.pegarVaga(index);
        alert(message.message);
+       return true;
      },
      error:(err)=>{
       alert(err.error.err);
      }
  });
+  return false;
 }
   ngOnInit(): void {
    this.getAluno();

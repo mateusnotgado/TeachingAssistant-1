@@ -40,7 +40,16 @@ disciplinaRouter.route("/ofertaDisciplina")
     return res.json(disciplinas);
   })
   .put((req: Request, res: Response)=>{
-    return res.json({Warning:"Put não suportado para essa rota"});
-})
+     if(disciplinaControl.temVaga(req.body.index)){
+      return res.json({message:"tem vaga"});
+     } else {
+      return res.status(409).json({err:"Disciplina lotada"})
+     }
 
+})
+disciplinaRouter.route("/pegarVaga")
+.put((req: Request, res: Response)=>{
+disciplinaControl.pegarVaga(req.body.index);
+return res.json({message:"vaga pega"});
+})
 export default disciplinaRouter;

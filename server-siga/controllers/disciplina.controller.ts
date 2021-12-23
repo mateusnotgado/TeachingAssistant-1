@@ -71,4 +71,14 @@ export class disciplinaController {
 
        return false;
       }
+      temVaga(index:number):boolean{
+        if(this.disciplinas[index].capacidade>this.disciplinas[index].totalDeAlunos){
+          return true;
+        } else {
+          return false;
+        }
+      }
+      pegarVaga(index:number){
+        this.disciplinas[index].totalDeAlunos=this.disciplinas[index].totalDeAlunos+1;
+      }
 }
